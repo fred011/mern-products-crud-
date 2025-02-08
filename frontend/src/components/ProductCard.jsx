@@ -35,6 +35,8 @@ const ProductCard = ({ product }) => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [loading, setLoading] = useState(false); // ✅ Define loading state
+
   const handleDeleteProduct = async (pid) => {
     setLoading(true);
     const { success, message } = await deleteProduct(pid);
@@ -57,8 +59,6 @@ const ProductCard = ({ product }) => {
     }
     setLoading(false);
   };
-
-  const [loading, setLoading] = useState(false); // ✅ Define loading state
 
   const handleUpdateProduct = async (pid, updatedProduct) => {
     setLoading(true); // ✅ Start loading
