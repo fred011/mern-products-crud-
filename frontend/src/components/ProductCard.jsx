@@ -36,9 +36,10 @@ const ProductCard = ({ product }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [loading, setLoading] = useState(false); // ✅ Define loading state
+  const [loading1, setLoading1] = useState(false); // ✅ Define loading state
 
   const handleDeleteProduct = async (pid) => {
-    setLoading(true);
+    setLoading1(true);
     const { success, message } = await deleteProduct(pid);
     if (!success) {
       toast({
@@ -57,7 +58,7 @@ const ProductCard = ({ product }) => {
         isClosable: true,
       });
     }
-    setLoading(false);
+    setLoading1(false);
   };
 
   const handleUpdateProduct = async (pid, updatedProduct) => {
@@ -114,7 +115,7 @@ const ProductCard = ({ product }) => {
           <IconButton icon={<EditIcon />} onClick={onOpen} colorScheme="blue" />
           <IconButton
             icon={<DeleteIcon />}
-            isLoading={loading}
+            isLoading={loading1}
             onClick={() => handleDeleteProduct(product._id)}
             colorScheme="red"
           />
